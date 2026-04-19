@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="description" content="A two-day locals' guide to Santo Spirito, Florence, prepared for Bill & Carrie Hannigan, April 20–21, 2026.">
+<title>Santo Spirito · A Guide for Bill & Carrie</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --cream:#faf6ef;
+    --paper:#ffffff;
+    --ink:#1f1612;
+    --ink-soft:#5a4a40;
+    --ink-faint:#8a7a70;
+    --terracotta:#b8553f;
+    --terracotta-deep:#8e3f2d;
+    --olive:#6b7a4f;
+    --gold:#c8a45c;
+    --line:rgba(31,22,18,0.08);
+    --shadow-sm:0 1px 2px rgba(31,22,18,0.06);
+    --shadow-md:0 8px 24px rgba(31,22,18,0.08);
+    --shadow-lg:0 20px 48px rgba(31,22,18,0.12);
+  }
+  *{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+  html,body{background:var(--cream);color:var(--ink)}
+  body{
+    font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
+    background-image:
+      radial-gradient(ellipse at top left,rgba(184,85,63,0.05) 0%,transparent 45%),
+      radial-gradient(ellipse at bottom right,rgba(107,122,79,0.05) 0%,transparent 45%);
+    background-attachment:fixed;
+  }
+  .serif{font-family:'Cormorant Garamond',ui-serif,Georgia,serif;font-weight:500;letter-spacing:-0.01em}
+  .serif-light{font-family:'Cormorant Garamond',ui-serif,Georgia,serif;font-weight:300}
+
+  .accent{color:var(--terracotta)}
+  .accent-deep{color:var(--terracotta-deep)}
+  .olive{color:var(--olive)}
+  .ink-soft{color:var(--ink-soft)}
+  .ink-faint{color:var(--ink-faint)}
+  .star{color:var(--gold)}
+
+  .badge{
+    display:inline-block;
+    padding:0.3rem 0.7rem;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    background:rgba(184,85,63,0.08);
+    color:var(--terracotta);
+    border-radius:2px;
+    font-weight:500;
+  }
+  .badge.access{background:rgba(107,122,79,0.10);color:var(--olive)}
+  .badge.gold{background:rgba(200,164,92,0.12);color:#8a6f33}
+
+  .card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    box-shadow:var(--shadow-sm);
+    transition:transform .5s cubic-bezier(0.34,1.56,0.64,1),box-shadow .5s;
+    will-change:transform;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:var(--shadow-md);
+  }
+
+  .divider{
+    height:1px;
+    background:linear-gradient(90deg,transparent,var(--line),transparent);
+  }
+
+  .tab-btn{
+    position:relative;
+    padding:1.1rem 0;
+    font-weight:500;
+    color:var(--ink-faint);
+    transition:color .35s;
+    background:transparent;
+    border:0;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .tab-btn.active{color:var(--terracotta)}
+  .tab-btn:hover{color:var(--ink)}
+  .tab-btn.active:hover{color:var(--terracotta)}
+  .tab-indicator{
+    position:absolute;
+    bottom:-1px;
+    height:2px;
+    background:var(--terracotta);
+    border-radius:2px;
+    pointer-events:none;
+  }
+
+  .pane{display:none}
+  .pane.active{display:block}
+
+  .ornament{
+    color:var(--terracotta);
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:300;
+  }
+
+  .map-pin{
+    display:inline-flex;
+    align-items:center;
+    gap:0.4rem;
+    color:var(--ink-soft);
+    font-size:0.85rem;
+  }
+  .map-pin::before{
+    content:'';
+    width:6px;height:6px;border-radius:50%;
+    background:var(--terracotta);
+    flex:none;
+  }
+
+  .timeline-bar{
+    position:absolute;
+    left:7.25rem;
+    top:0;bottom:0;
+    width:1px;
+    background:linear-gradient(180deg,transparent,var(--line) 8%,var(--line) 92%,transparent);
+  }
+  @media (max-width:767px){.timeline-bar{display:none}}
+
+  .it-dot{
+    position:absolute;
+    left:7.05rem;
+    top:1.4rem;
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--terracotta);
+    box-shadow:0 0 0 4px var(--cream);
+    z-index:1;
+  }
+  @media (max-width:767px){.it-dot{display:none}}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:0.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<header class="relative overflow-hidden">
+  <div class="max-w-5xl mx-auto px-6 pt-14 pb-10 md:pt-24 md:pb-16">
+    <div data-anim="hero-tag" class="badge mb-6">For Bill &amp; Carrie · April 20–21, 2026</div>
+    <h1 data-anim="hero-title" class="serif text-[2.6rem] md:text-7xl leading-[1.02] mb-6 tracking-tight">
+      Santo Spirito.<br>
+      <span class="serif-light italic accent">The neighborhood Florentines actually live in.</span>
+    </h1>
+    <p data-anim="hero-sub" class="text-base md:text-xl max-w-2xl ink-soft leading-relaxed">
+      A two-day, locals-only guide through Oltrarno — built around long lunches, artisanal gelato, sunset aperitivo on the piazza, and a flat square Carrie can navigate without a single hill.
+    </p>
+    <div data-anim="hero-meta" class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm ink-soft">
+      <span class="map-pin">Piazza Santo Spirito · Oltrarno · Florence</span>
+      <span class="map-pin">Every venue within 100m</span>
+      <span class="map-pin">Mild April weather</span>
+    </div>
+  </div>
+</header>
+
+<!-- Tabs -->
+<nav class="sticky top-0 z-20 backdrop-blur" style="background:rgba(250,246,239,0.88);border-bottom:1px solid var(--line)">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="flex gap-5 md:gap-12 relative overflow-x-auto" id="tabs" role="tablist" style="scrollbar-width:none">
+      <button class="tab-btn active text-sm md:text-base whitespace-nowrap" data-tab="lunch" role="tab">Lunch</button>
+      <button class="tab-btn text-sm md:text-base whitespace-nowrap" data-tab="gelato" role="tab">Gelato &amp; Tea</button>
+      <button class="tab-btn text-sm md:text-base whitespace-nowrap" data-tab="aperitivo" role="tab">Aperitivo</button>
+      <button class="tab-btn text-sm md:text-base whitespace-nowrap" data-tab="itinerary" role="tab">Itinerary</button>
+      <span class="tab-indicator" id="tabIndicator" aria-hidden="true"></span>
+    </div>
+  </div>
+</nav>
+
+<!-- Content -->
+<main class="max-w-5xl mx-auto px-6 py-12 md:py-16">
+
+  <!-- Lunch -->
+  <section class="pane active" id="pane-lunch" role="tabpanel">
+    <h2 class="serif text-3xl md:text-5xl mb-3 tracking-tight">Where locals eat lunch.</h2>
+    <p class="ink-soft mb-12 max-w-2xl text-base md:text-lg">Four trattorias and osterias within 100 metres of the piazza. Decades-rooted, family-run, no tourist menus, no rush.</p>
+    <div class="space-y-6" id="lunch-cards"></div>
+  </section>
+
+  <!-- Gelato & Tea -->
+  <section class="pane" id="pane-gelato" role="tabpanel">
+    <h2 class="serif text-3xl md:text-5xl mb-3 tracking-tight">Gelato &amp; afternoon tea.</h2>
+    <p class="ink-soft mb-12 max-w-2xl text-base md:text-lg">Three artisanal gelaterias rated 4.6–4.7★, plus one vintage café for a proper afternoon tea — at-table service, no standing.</p>
+    <div class="space-y-6" id="gelato-cards"></div>
+  </section>
+
+  <!-- Aperitivo -->
+  <section class="pane" id="pane-aperitivo" role="tabpanel">
+    <h2 class="serif text-3xl md:text-5xl mb-3 tracking-tight">Sunset on the piazza.</h2>
+    <p class="ink-soft mb-12 max-w-2xl text-base md:text-lg">Five-thirty to seven, golden hour. Carrie sits on the square, Bill watches the swallows wheel above the basilica, and Brunelleschi's façade catches the light.</p>
+    <div class="space-y-6" id="apero-cards"></div>
+  </section>
+
+  <!-- Itinerary -->
+  <section class="pane" id="pane-itinerary" role="tabpanel">
+    <h2 class="serif text-3xl md:text-5xl mb-3 tracking-tight">The two-day flow.</h2>
+    <p class="ink-soft mb-12 max-w-2xl text-base md:text-lg">Slow is fast. Stay in the neighborhood. Eat lunch. Watch the piazza. Have tea. Drink wine. Return tomorrow.</p>
+    <div id="itinerary-content"></div>
+  </section>
+
+</main>
+
+<!-- Accessibility footer -->
+<section class="border-t" style="background:rgba(255,255,255,0.55);border-color:var(--line)">
+  <div class="max-w-5xl mx-auto px-6 py-14 md:py-20">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-16">
+      <div>
+        <span class="badge access mb-5">For Carrie's foot</span>
+        <h3 class="serif text-3xl md:text-4xl mt-3 mb-5 tracking-tight">A flat piazza, not a hill town.</h3>
+        <p class="ink-soft leading-relaxed">Every venue here sits on or within 100m of Piazza Santo Spirito. No cobblestone climbs, no narrow stairs, no long walks between stops. Outdoor tables let her sit while Bill orders. April is mild — no heat to push through, no summer crowds to weave around.</p>
+      </div>
+      <div class="space-y-5">
+        <div class="flex gap-4">
+          <span class="ornament text-2xl shrink-0 leading-none">§</span>
+          <div>
+            <strong class="block mb-1">Reserve table edges</strong>
+            <span class="text-sm ink-soft">Mention the foot when calling — they'll seat you on the piazza side, the shortest walk in.</span>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="ornament text-2xl shrink-0 leading-none">§</span>
+          <div>
+            <strong class="block mb-1">The piazza itself is the rest stop</strong>
+            <span class="text-sm ink-soft">Stone steps around the basilica. Sit any time, free of charge.</span>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <span class="ornament text-2xl shrink-0 leading-none">§</span>
+          <div>
+            <strong class="block mb-1">Taxi over the river</strong>
+            <span class="text-sm ink-soft">From the Duomo side, a five-minute cab beats walking Ponte Vecchio with crowds.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="max-w-5xl mx-auto px-6 py-10 text-center">
+  <div class="ornament text-xl mb-3">·  ·  ·</div>
+  <div class="text-xs ink-faint tracking-[0.2em] uppercase">Slow is fast · Stay in the neighborhood</div>
+</footer>
+
+<script>
+const data = {
+  lunch:[
+    {name:"Trattoria Giovanni", addr:"Via Sant'Agostino, 38", price:"€€", note:"~€11 lunch special",
+     blurb:"Giovanni himself answers the phone — that alone tells you everything. Tuscan classics: bistecca alla fiorentina, sautéed bietole, seasonal antipasti. Ground-floor, spacious, no fuss.",
+     best:"Carrie's first meal. Authentic without pretense.", call:"Call directly — Giovanni answers."},
+    {name:"Trattoria La Casalinga", addr:"Via dei Michelozzi, 9", price:"€€", note:"family-run, decades",
+     blurb:"Run by the same family for generations. Pappa al pomodoro, chicken liver terrine, peposo (slow-cooked peppery beef stew that tastes like history). Outdoor tables overlook the piazza.",
+     best:"Leisurely lunch with people-watching. Reserve a table on the piazza edge.", call:"Email or call — mention the foot, ask for piazza-side."},
+    {name:"I'Raddi", addr:"Via dei Michelozzi, 9 (off the piazza)", price:"€€", note:"budget-friendly",
+     blurb:"The casual spin-off of La Casalinga. Peposo panini, a small prix fixe, excellent wine by the glass. The Florentine ideal: a glass of red and a sandwich, sat down, watching life.",
+     best:"Lighter lunch. Wine-focused afternoon. Walk-in welcome.", call:"No reservation needed. Just arrive."},
+    {name:"Il Santo Bevitore", addr:"Via Santo Spirito, 64", price:"€€€", note:"refined osteria",
+     blurb:"A step up from trattoria without losing the soul. Curated wine — real wine, not tourist wine. Chicken liver terrine, pappa al pomodoro, seasonal Tuscan preparations. Street-level entry, elegant interior.",
+     best:"April 21 dinner. Refined but rooted.", call:"Reserve dinner. Mention accessibility for table placement."}
+  ],
+  gelato:[
+    {name:"Gelateria La Carraia", rating:"4.7", reviews:"3,490",
+     blurb:"The benchmark for Florence gelato. Natural ingredients, traditional methods, seasonal rotation. Pistachio (if Sicilian's in stock), hazelnut, fruit sorbettos.",
+     specialty:"Pistachio · seasonal fruit", best:"April 20, 3:00 PM — after Giovanni."},
+    {name:"Gelateria La Sorbettiera", rating:"4.7", reviews:"505",
+     blurb:"Sorbetto specialists. Fruit-based, dairy-free, lighter than traditional gelato. Lemon, raspberry, seasonal variations that change weekly.",
+     specialty:"Lemon sorbetto · raspberry · fruit-focused", best:"If Carrie wants something refreshing over rich."},
+    {name:"Sbrino — Gelatificio Contadino", rating:"4.6", reviews:"338",
+     blurb:"Contadino means farmhouse. Sources directly from local producers and only makes gelato from what's available that day. No fixed menu — pure seasonal philosophy.",
+     specialty:"Whatever the day's ingredients dictate", best:"April 21, 3:30 PM — most authentically local."},
+    {name:"Caffè Santo Spirito", addr:"Via Santo Spirito, 12/r", phone:"+39 055 7604007", isTea:true,
+     blurb:"Vintage-styled bar in the heart of the neighborhood. Tea service, coffee, light refreshments. At-table service — kind to Carrie's foot, kind to a slow afternoon.",
+     best:"April 20, 4:00 PM. Reserve afternoon tea by phone."}
+  ],
+  aperitivo:[
+    {name:"Volume Firenze", rating:"4.8", location:"Directly on Piazza Santo Spirito",
+     blurb:"Meticulously curated bar on the piazza itself. Craft cocktails, natural wine, sophisticated stuzzichini. Ground-level seating on the square — Carrie sits comfortably while the neighborhood evening assembles around her.",
+     best:"April 20 or 21, 5:30–7:00 PM. Sunset slots book up — reserve.", golden:"Golden hour 5:30–7:30 PM"}
+  ],
+  itinerary:[
+    {day:"April 20 · Monday", subtitle:"Arrival, anchor lunch, sunset.", items:[
+      {time:"12:30 PM", venue:"Trattoria Giovanni", type:"Lunch", note:"Call ahead — Giovanni answers. Authentic entry point. €11 lunch special."},
+      {time:"3:00 PM", venue:"Gelateria La Carraia", type:"Gelato", note:"Benchmark quality. Walk-in. Two-minute walk from lunch."},
+      {time:"4:00 PM", venue:"Caffè Santo Spirito", type:"Tea", note:"Reserve afternoon tea by phone. At-table service. A proper sit-down."},
+      {time:"5:30 PM", venue:"Volume Firenze", type:"Aperitivo", note:"Sunset on the piazza. Reserve a piazza-side table — sunset slots book."}
+    ]},
+    {day:"April 21 · Tuesday", subtitle:"Slower start, refined dinner.", items:[
+      {time:"1:00 PM", venue:"Trattoria La Casalinga", type:"Lunch", note:"Outdoor tables, piazza views. Mention the foot when reserving."},
+      {time:"3:30 PM", venue:"Sbrino  ·  La Sorbettiera", type:"Gelato", note:"Sbrino for the most local approach · Sorbettiera if she wants something lighter."},
+      {time:"7:00 PM", venue:"Il Santo Bevitore", type:"Dinner", note:"Refined osteria. Reserve. Mention accessibility for table placement."}
+    ]}
+  ]
+};
+
+function renderLunch(){
+  document.getElementById('lunch-cards').innerHTML = data.lunch.map(v=>`
+    <article class="card p-6 md:p-8">
+      <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+        <h3 class="serif text-[1.7rem] md:text-3xl tracking-tight">${v.name}</h3>
+        <div class="text-sm"><span class="olive font-medium">${v.price}</span>${v.note?` <span class="ink-faint">·</span> <span class="ink-soft">${v.note}</span>`:''}</div>
+      </div>
+      <div class="map-pin mb-5">${v.addr}</div>
+      <p class="leading-relaxed mb-6 ink-soft">${v.blurb}</p>
+      <div class="divider mb-6"></div>
+      <div class="grid sm:grid-cols-2 gap-5 text-sm">
+        <div><div class="badge mb-2">Best for</div><div class="leading-relaxed">${v.best}</div></div>
+        <div><div class="badge access mb-2">Reservations</div><div class="leading-relaxed">${v.call}</div></div>
+      </div>
+    </article>`).join('');
+}
+
+function renderGelato(){
+  document.getElementById('gelato-cards').innerHTML = data.gelato.map(v=>{
+    if(v.isTea){
+      return `
+        <article class="card p-6 md:p-8">
+          <div class="flex flex-wrap items-baseline justify-between gap-3 mb-2">
+            <h3 class="serif text-[1.7rem] md:text-3xl tracking-tight">${v.name}</h3>
+            <div class="badge access">Tea &amp; Café</div>
+          </div>
+          <div class="map-pin mb-1">${v.addr}</div>
+          <div class="text-sm accent mb-5 font-medium">${v.phone}</div>
+          <p class="leading-relaxed mb-6 ink-soft">${v.blurb}</p>
+          <div class="divider mb-6"></div>
+          <div class="text-sm"><div class="badge mb-2">Best for</div><div class="leading-relaxed">${v.best}</div></div>
+        </article>`;
+    }
+    return `
+      <article class="card p-6 md:p-8">
+        <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+          <h3 class="serif text-[1.7rem] md:text-3xl tracking-tight">${v.name}</h3>
+          <div class="text-sm flex items-center gap-1.5"><span class="star text-base">★</span><strong>${v.rating}</strong><span class="ink-faint">(${v.reviews})</span></div>
+        </div>
+        <p class="leading-relaxed mb-6 ink-soft">${v.blurb}</p>
+        <div class="divider mb-6"></div>
+        <div class="grid sm:grid-cols-2 gap-5 text-sm">
+          <div><div class="badge gold mb-2">Specialty</div><div class="leading-relaxed">${v.specialty}</div></div>
+          <div><div class="badge access mb-2">Best for</div><div class="leading-relaxed">${v.best}</div></div>
+        </div>
+      </article>`;
+  }).join('');
+}
+
+function renderApero(){
+  document.getElementById('apero-cards').innerHTML = data.aperitivo.map(v=>`
+    <article class="card p-6 md:p-8">
+      <div class="flex flex-wrap items-baseline justify-between gap-3 mb-3">
+        <h3 class="serif text-[1.7rem] md:text-3xl tracking-tight">${v.name}</h3>
+        <div class="text-sm flex items-center gap-1.5"><span class="star text-base">★</span><strong>${v.rating}</strong></div>
+      </div>
+      <div class="map-pin mb-5">${v.location}</div>
+      <p class="leading-relaxed mb-6 ink-soft">${v.blurb}</p>
+      <div class="divider mb-6"></div>
+      <div class="grid sm:grid-cols-2 gap-5 text-sm">
+        <div><div class="badge gold mb-2">Golden hour</div><div class="leading-relaxed">${v.golden}</div></div>
+        <div><div class="badge access mb-2">Best for</div><div class="leading-relaxed">${v.best}</div></div>
+      </div>
+    </article>`).join('');
+}
+
+function renderItinerary(){
+  document.getElementById('itinerary-content').innerHTML = data.itinerary.map(d=>`
+    <div class="mb-14 last:mb-0">
+      <div class="mb-7">
+        <h3 class="serif text-2xl md:text-3xl accent-deep tracking-tight">${d.day}</h3>
+        <p class="ink-soft text-sm md:text-base mt-1 italic">${d.subtitle}</p>
+      </div>
+      <div class="relative">
+        <span class="timeline-bar"></span>
+        <div class="space-y-3">
+          ${d.items.map(i=>`
+            <div class="card p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 relative">
+              <span class="it-dot"></span>
+              <div class="md:w-28 shrink-0">
+                <div class="serif text-[1.35rem] leading-tight">${i.time}</div>
+                <div class="text-[0.68rem] uppercase tracking-[0.14em] ink-faint mt-1">${i.type}</div>
+              </div>
+              <div class="flex-1 md:border-l md:pl-7" style="border-color:var(--line)">
+                <div class="font-medium mb-1">${i.venue}</div>
+                <div class="text-sm ink-soft leading-relaxed">${i.note}</div>
+              </div>
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+renderLunch(); renderGelato(); renderApero(); renderItinerary();
+
+// Tabs with spring physics
+const tabs = document.querySelectorAll('.tab-btn');
+const indicator = document.getElementById('tabIndicator');
+
+function moveIndicator(btn, animate=true){
+  if(!btn) return;
+  const rect = btn.getBoundingClientRect();
+  const parentRect = btn.parentElement.getBoundingClientRect();
+  const target = { left: rect.left - parentRect.left, width: rect.width };
+  if(animate){
+    gsap.to(indicator, { left: target.left, width: target.width, duration: 0.7, ease: "elastic.out(1, 0.6)" });
+  } else {
+    gsap.set(indicator, target);
+  }
+}
+
+function switchTab(target){
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === target));
+  document.querySelectorAll('.pane').forEach(p => {
+    const isActive = p.id === `pane-${target}`;
+    if(isActive){
+      p.classList.add('active');
+      gsap.fromTo(p.querySelectorAll('h2, p, .card'),
+        { opacity: 0, y: 18 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.05, ease: "back.out(1.4)", clearProps: "all" }
+      );
+    } else {
+      p.classList.remove('active');
+    }
+  });
+  moveIndicator(document.querySelector(`.tab-btn[data-tab="${target}"]`));
+}
+
+tabs.forEach(t => t.addEventListener('click', () => switchTab(t.dataset.tab)));
+
+window.addEventListener('load', () => {
+  moveIndicator(document.querySelector('.tab-btn.active'), false);
+
+  gsap.from('[data-anim="hero-tag"]',  { opacity: 0, y: 12, duration: 0.6, delay: 0.10, ease: "back.out(1.7)" });
+  gsap.from('[data-anim="hero-title"]',{ opacity: 0, y: 28, duration: 0.95, delay: 0.18, ease: "back.out(1.4)" });
+  gsap.from('[data-anim="hero-sub"]',  { opacity: 0, y: 18, duration: 0.75, delay: 0.42, ease: "back.out(1.4)" });
+  gsap.from('[data-anim="hero-meta"]', { opacity: 0, y: 14, duration: 0.7,  delay: 0.62, ease: "back.out(1.4)" });
+
+  gsap.from('#pane-lunch h2',   { opacity: 0, y: 18, duration: 0.7, delay: 0.55, ease: "back.out(1.4)" });
+  gsap.from('#pane-lunch > p',  { opacity: 0, y: 14, duration: 0.6, delay: 0.65, ease: "back.out(1.4)" });
+  gsap.from('#pane-lunch .card',{ opacity: 0, y: 22, duration: 0.6, stagger: 0.08, delay: 0.75, ease: "back.out(1.4)" });
+});
+
+window.addEventListener('resize', () => moveIndicator(document.querySelector('.tab-btn.active'), false));
+</script>
+</body>
+</html>
