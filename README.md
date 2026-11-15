@@ -6,8 +6,9 @@ A personal page: one HTML file.
 
 `index.html` (22 KB), the only file.
 
-## Next step
+## Place in the estate
 
-Register action `PERSONAL_PRIVATE`. It is S. Jason Prohaska's personal repository and is public today. After the stop card its visibility changes to private. Nothing moves into the estate.
+It is S. Jason Prohaska's personal repository, outside the estate. It is public today. After the stop card its visibility changes to private.
+
 
 Copyright S. Jason Prohaska.
